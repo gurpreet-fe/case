@@ -12,8 +12,8 @@ import {
 } from '@chakra-ui/react';
 import { AiFillGithub } from 'react-icons/ai';
 import { IoMoon, IoSunny } from 'react-icons/io5';
-import ConnectWallet from './ConnectWallet';
 import NextLink from 'next/link';
+import { FaEthereum } from 'react-icons/fa';
 
 function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -97,5 +97,21 @@ function Navbar() {
     </Box>
   );
 }
+
+export const ConnectWallet = () => {
+  const connectWalletHandler = () => {};
+
+  return (
+    <Button
+      leftIcon={<FaEthereum />}
+      colorScheme='purple'
+      variant={'solid'}
+      rounded={'full'}
+      onClick={connectWalletHandler}
+    >
+      Connect Wallet
+    </Button>
+  );
+};
 
 export default Navbar;
