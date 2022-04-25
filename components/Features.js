@@ -34,7 +34,7 @@ function Features() {
   return (
     <>
       <H2 text='How it works' />
-      <Container px={4} maxW={'7xl'}>
+      <Container px={4} maxW={'7xl'} mb={8}>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
           <Feature
             icon={<Icon as={FcLike} w={10} h={10} />}
