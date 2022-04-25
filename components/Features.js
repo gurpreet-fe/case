@@ -7,6 +7,7 @@ import {
   Container,
 } from '@chakra-ui/react';
 import { FcDonate, FcLike, FcShare } from 'react-icons/fc';
+import H2 from './H2';
 
 const Feature = (props) => {
   return (
@@ -32,6 +33,7 @@ const Feature = (props) => {
 function Features() {
   return (
     <>
+      <H2 text={'How it works'} />
       <Container px={4} maxW={'7xl'} mb={8}>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
           <Feature
@@ -47,7 +49,7 @@ function Features() {
           <Feature
             icon={<Icon as={FcShare} w={10} h={10} />}
             title={'Share Across'}
-            text={''}
+            text={'adfadfadf lorem impioadluh adfiuy l au efpmudfp napiueh '}
           />
         </SimpleGrid>
       </Container>
