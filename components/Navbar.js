@@ -14,6 +14,7 @@ import { AiFillGithub } from 'react-icons/ai';
 import { IoMoon, IoSunny } from 'react-icons/io5';
 import NextLink from 'next/link';
 import { FaEthereum } from 'react-icons/fa';
+import { useState } from 'react';
 
 function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -98,18 +99,43 @@ function Navbar() {
   );
 }
 
-export const ConnectWallet = () => {
-  const connectWalletHandler = () => {};
+const ConnectWallet = () => {
+  const [walletButtonText, setWalletButtonText] = useState('Connect Wallet');
+
+  const connectWalletHandler = async () => {
+    if (window.ethereum && window.ethereum.isMetaMask) {
+      window.ethereum
+        .request({
+          method: 'eth_requestAccounts',
+        })
+        .then((accounts) => {
+          const account = accounts[0];
+
+          setWalletButtonText(
+            account.substring(0, 7) +
+              '...' +
+              account.substring(account.length - 4)
+          );
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      alert('Please install MetaMask browser extension');
+    }
+  };
 
   return (
     <Button
+      isTruncated
+      maxWidth={172}
       leftIcon={<FaEthereum />}
       colorScheme='purple'
       variant={'solid'}
       rounded={'full'}
       onClick={connectWalletHandler}
     >
-      Connect Wallet
+      {walletButtonText}
     </Button>
   );
 };
